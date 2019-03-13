@@ -2,14 +2,15 @@
   "name": "ng-kube",
   "version": "0.0.0",
   "scripts": {
+    "serve:slug": "npm run config && npm run serve",
+    "config": "replace '(slug: `).*(`)' '$1'$SLUG'$2' src/environments/*",
+    "serve": "ng serve --prod --aot --live-reload=false",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "serve": "ng serve --prod",
-    "serve:slug": "replace '(slug: `).*(`)' '$1'$SLUG'$2' src/environments/* && npm run serve"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
