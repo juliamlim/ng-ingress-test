@@ -1,10 +1,10 @@
 FROM node:alpine
 
-COPY . /app
-
 WORKDIR /app
 
-RUN npm i
+COPY . .
+
+RUN npm install
 
 ARG SLUG=foo
 ENV SLUG=${SLUG}

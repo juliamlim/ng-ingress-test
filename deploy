@@ -52,13 +52,13 @@ spec:
           httpGet:
             path: /
             port: ${env.port}
-          initialDelaySeconds: 180
+          initialDelaySeconds: 120
           periodSeconds: 3
         readinessProbe:
           httpGet:
             path: /
             port: ${env.port}
-          initialDelaySeconds: 180
+          initialDelaySeconds: 60
           periodSeconds: 5
 ---
 apiVersion: v1
