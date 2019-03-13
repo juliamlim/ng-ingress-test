@@ -3,7 +3,7 @@
 /**
  * To deploy to a new slug run:
  *
- * $ node /path/to/this/file --slug=foo
+ * $ node /path/to/this/file --slug=foo --version=0.1.0
  */
 const { execSync } = require('child_process');
 
@@ -14,10 +14,10 @@ const flags = process.argv.slice(2).reduce((json, input) => {
 }, {});
 
 const env = {
-  imagePath: 'gcr.io/services-165213/ng-kube-test:0.1.0',
-  slug: flags.slug,
+  slug: flags.slug || 'baz',
   port: 4200,
   namespace: 'ng-kube-test',
+  imagePath: `gcr.io/services-165213/ng-kube-test:${flags.version || '0.0.0'}`,
 };
 
 const kubeResources = `
@@ -91,8 +91,8 @@ spec:
         path: /${env.slug}`;
 
 const deploySteps = [
-  // `docker build -t ${env.imagePath} --build-arg SLUG=${env.slug} .`,
-  // `docker push ${env.imagePath}`,
+  `docker build -t ${env.imagePath} --build-arg SLUG=${env.slug} .`,
+  `docker push ${env.imagePath}`,
   `echo '${kubeResources}' > ./kubetemp.yaml`,
   `kubectl apply -f ./kubetemp.yaml -n=${env.namespace}`,
   `rm ./kubetemp.yaml`,
