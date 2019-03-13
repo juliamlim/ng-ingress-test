@@ -3,7 +3,7 @@
 /**
  * To deploy to a new slug run:
  *
- * $ node /path/to/this/file --slug=foo --version=0.1.0
+ * $ node /path/to/this/file --namespace='ng-kube-test' --slug=foo --version=0.0.0
  */
 const { execSync } = require('child_process');
 
