@@ -16,8 +16,18 @@ const flags = process.argv.slice(2).reduce((json, input) => {
 const env = {
   slug: flags.slug || 'baz',
   namespace: flags.namespace || 'ng-kube-test',
-  imagePath: `gcr.io/services-165213/${flags.namespace}:${flags.version || '0.0.0'}`,
+  imagePath: `gcr.io/${getConsoleProject()}/${flags.namespace || 'ng-kube-test'}:${flags.version || '0.0.0'}`,
   port: 4200,
+};
+
+getConsoleProject = () => {
+  const cmd = 'gcloud config get-value project';
+  try {
+    return execSync(cmd, { encoding: 'utf-8' }).trim();
+  } catch (error) {
+    console.log('Could not return project name.', error);
+    process.exit(1);
+  }
 };
 
 const kubeResources = `
