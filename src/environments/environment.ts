@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  slug: `bar`
+  slug: `1234567`
 };
 
 /*

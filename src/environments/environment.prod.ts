@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  slug: `bar`
+  slug: `1234567`
 };

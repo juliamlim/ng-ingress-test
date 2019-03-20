@@ -4,7 +4,7 @@
   "scripts": {
     "serve:slug": "npm run config && npm run serve",
     "config": "replace '(slug: `).*(`)' '$1'$SLUG'$2' src/environments/*",
-    "serve": "ng serve --prod --aot --live-reload=false",
+    "serve": "ng serve --prod --aot --base-href=/$SLUG/ --deploy-url=/$SLUG/ --live-reload=false --host=0.0.0.0",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

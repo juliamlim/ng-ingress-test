@@ -3,8 +3,8 @@
   <nav>
     <span>{{ slug }}</span>
     &nbsp;
-    <a [href]="'/shop'">Shop</a> |
-    <a [href]="'/account/previous-purchases'">Easy Reorder</a>
+    <a routerLink="/shop">Shop</a> |
+    <a routerLink="/account/previous-purchases">Easy Reorder</a>
   </nav>
   <!--This is the injection point for the router so we can route to different components.-->
   <router-outlet></router-outlet>
